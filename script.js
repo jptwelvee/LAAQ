@@ -107,7 +107,7 @@ contactForm.addEventListener('submit', (e) => {
     // Limpa o formulário
     contactForm.reset();
     
-    /* 
+    /*
     EXEMPLO DE INTEGRAÇÃO COM BACKEND NODE.JS:
     
     fetch('http://seu-servidor.com/api/contato', {

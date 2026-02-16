@@ -10,6 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Popup de Sucesso -->
+    <div class="success-popup" id="successPopup">
+        <div class="success-icon">✅</div>
+        <h3>Mensagem Enviada!</h3>
+        <p>Recebemos sua solicitação e entraremos em contato em breve.</p>
+        <button class="btn-primary" onclick="fecharPopup()">Fechar</button>
+    </div>
+
     <!-- Navegação -->
     <nav class="navbar">
         <div class="container">
@@ -34,7 +45,6 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">Momentos que se tornam histórias</h1>
-            <br>
             <p class="hero-subtitle">Capturamos a essência dos seus eventos mais especiais</p>
             <a href="#contato" class="btn-primary">Fale Conosco</a>
         </div>
@@ -134,12 +144,12 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2 class="section-title">Sobre a LAAQ Storymaker</h2>
-                    <p>Somos apaixonados por eternizar sentimentos. Cada evento é um encontro de histórias, sorrisos e emoções que acontecem uma única vez — e nossa missão 
-                        é transformar esses instantes em lembranças que você poderá reviver para sempre. Com experiência, sensibilidade e atenção a cada detalhe, registramos não apenas imagens, mas momentos verdadeiros que carregam significado, carinho e emoção.
-</p>
-                    <div class="about-image">
-                    <div class="placeholder-image"></div>
+                    <h2 class="section-title">Sobre a LAAQ Stor</h2>
+                    <p>Somos apaixonados por eternizar sentimentos. Cada evento é um encontro de histórias, sorrisos e emoções que acontecem uma única vez — e nossa missão é transformar esses instantes em lembranças que você poderá reviver para sempre.</p>
+                    <p>Com experiência, sensibilidade e atenção a cada detalhe, registramos não apenas imagens, mas momentos verdadeiros que carregam significado, carinho e emoção.</p>
+                </div>
+                <div class="about-image">
+                    <div class="placeholder-image">Equipe LAAQ Storymaker</div>
                 </div>
             </div>
         </div>
@@ -152,59 +162,39 @@
             <p class="section-subtitle">Vamos criar memórias incríveis juntos</p>
             <div class="contact-content">
                 <div class="contact-form">
-    <div class="form-group">
-        <input type="text" id="nome" placeholder="Seu Nome" required>
-    </div>
-    <div class="form-group">
-        <input type="email" id="email" placeholder="Seu E-mail" required>
-    </div>
-    <div class="form-group">
-        <input type="tel" id="telefone" placeholder="Seu Telefone" required>
-    </div>
-    <div class="form-group">
-        <select id="servico" required>
-            <option value="">Tipo de Evento</option>
-            <option value="Casamento">Casamento</option>
-            <option value="15 Anos">Festa de 15 Anos</option>
-            <option value="Aniversário">Aniversário</option>
-            <option value="Corporativo">Evento Corporativo</option>
-            <option value="Familiar">Ensaio Familiar</option>
-            <option value="Formatura">Formatura</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <textarea id="mensagem" placeholder="Conte-nos sobre seu evento" rows="5" required></textarea>
-    </div>
-    <button type="button" class="btn-primary" onclick="enviarWhatsApp()">Enviar pelo WhatsApp</button>
-</div>
+                    <div class="form-group">
+                        <input type="text" id="nome" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Seu E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="telefone" placeholder="Seu Telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="servico" required>
+                            <option value="">Tipo de Evento</option>
+                            <option value="Casamento">Casamento</option>
+                            <option value="15 Anos">Festa de 15 Anos</option>
+                            <option value="Aniversário">Aniversário</option>
+                            <option value="Corporativo">Evento Corporativo</option>
+                            <option value="Familiar">Ensaio Familiar</option>
+                            <option value="Formatura">Formatura</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="mensagem" placeholder="Conte-nos sobre seu evento" rows="5" required></textarea>
+                    </div>
+                    <button type="button" class="btn-primary" id="btnEnviar" onclick="enviarFormulario()">
+                        Enviar Mensagem 📩
+                    </button>
+                    
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Enviando sua mensagem...</p>
+                    </div>
+                </div>
 
-<script>
-function enviarWhatsApp() {
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('telefone').value;
-    const servico = document.getElementById('servico').value;
-    const mensagem = document.getElementById('mensagem').value;
-    
-    if (!nome || !email || !telefone || !servico || !mensagem) {
-        alert('Por favor, preencha todos os campos!');
-        return;
-    }
-    
-    const texto = `*Nova solicitação do site LAAQ!*%0A%0A` +
-                  `*Nome:* ${nome}%0A` +
-                  `*E-mail:* ${email}%0A` +
-                  `*Telefone:* ${telefone}%0A` +
-                  `*Tipo de Evento:* ${servico}%0A` +
-                  `*Mensagem:* ${mensagem}`;
-    
-    
-    const numeroWhatsApp = '5527997327793';
-    
-    const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
-    window.open(url, '_blank');
-}
-</script>
                 <div class="contact-info">
                     <div class="info-item">
                         <h3>📧 E-mail</h3>
@@ -216,12 +206,10 @@ function enviarWhatsApp() {
                     </div>
                     <div class="info-item">
                         <h3>📍 Localização</h3>
-                        <p>Vitoria, Espírito Santo</p>
+                        <p>Vitória, Espírito Santo</p>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/laaqstorymaker?igsh=N3k2emgwZWJsOGhh" aria-label="Instagram">📷 Instagram</a>
-
-                        
+                        <a href="https://www.instagram.com/laaqstorymaker?igsh=N3k2emgwZWJsOGhh" target="_blank" aria-label="Instagram">📷 Instagram</a>
                     </div>
                 </div>
             </div>
@@ -237,5 +225,81 @@ function enviarWhatsApp() {
     </footer>
 
     <script src="script.js"></script>
+    
+    <script>
+    // ============================================
+    // WEBHOOK AUTOMÁTICO - GOOGLE APPS SCRIPT
+    // ============================================
+    
+    // URL DO GOOGLE APPS SCRIPT
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz0i-FyvY0GTwJwV_C2skZgoam5WAOg0J6xZ3_6ABnNiI-mbSTrK8adbLTRLdNbvZEe/exec';
+    
+    async function enviarFormulario() {
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const telefone = document.getElementById('telefone').value;
+        const servico = document.getElementById('servico').value;
+        const mensagem = document.getElementById('mensagem').value;
+        
+        // Validação
+        if (!nome || !email || !telefone || !servico || !mensagem) {
+            alert('⚠️ Por favor, preencha todos os campos!');
+            return;
+        }
+        
+        // Mostra loading
+        document.getElementById('btnEnviar').style.display = 'none';
+        document.getElementById('loading').classList.add('show');
+        
+        // Prepara os dados
+        const dados = {
+            nome: nome,
+            email: email,
+            telefone: telefone,
+            servico: servico,
+            mensagem: mensagem
+        };
+        
+        try {
+            // Envia para o webhook
+            const response = await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados)
+            });
+            
+            // Mostra popup de sucesso
+            document.getElementById('overlay').classList.add('show');
+            document.getElementById('successPopup').classList.add('show');
+            
+            // Limpa o formulário
+            document.getElementById('nome').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('telefone').value = '';
+            document.getElementById('servico').value = '';
+            document.getElementById('mensagem').value = '';
+            
+            console.log('✅ Formulário enviado!');
+            
+        } catch (erro) {
+            console.error('❌ Erro:', erro);
+            alert('Erro ao enviar. Tente pelo WhatsApp: (27) 99732-7793');
+        } finally {
+            document.getElementById('loading').classList.remove('show');
+            document.getElementById('btnEnviar').style.display = 'inline-block';
+        }
+    }
+    
+    function fecharPopup() {
+        document.getElementById('overlay').classList.remove('show');
+        document.getElementById('successPopup').classList.remove('show');
+    }
+    
+    document.getElementById('overlay').addEventListener('click', fecharPopup);
+    </script>
 </body>
 </html>
+

@@ -1,5 +1,5 @@
 /* ============================================
-   VARIÁVEIS CSS - FÁCIL DE PERSONALIZAR
+VARIÁVEIS CSS - FÁCIL DE PERSONALIZAR
    ============================================ */
 :root {
     /* Cores da marca - VERDE */
@@ -791,5 +791,98 @@ a {
     
     .section-title {
         font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   POPUP DE SUCESSO E LOADING
+   ============================================ */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+.overlay.show {
+    display: block;
+}
+
+.success-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    text-align: center;
+    max-width: 400px;
+    animation: slideIn 0.5s ease;
+}
+
+.success-popup.show {
+    display: block;
+}
+
+.success-popup h3 {
+    color: var(--primary-green);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+}
+
+.success-popup p {
+    color: var(--gray);
+    margin-bottom: 2rem;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 1rem;
+    color: white;
+}
+
+.loading.show {
+    display: block;
+}
+
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
