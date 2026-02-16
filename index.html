@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAAQ Stor - Casamentos e Eventos Especiais</title>
+    <title>LAAQ Storymaker - Casamentos e Eventos Especiais</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     <!-- Navegação -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">LAAQ Storymaker</div>
+            <div class="logo">LAAQ Stor</div>
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#servicos">Serviços</a></li>
@@ -151,33 +151,60 @@
             <h2 class="section-title">Entre em Contato</h2>
             <p class="section-subtitle">Vamos criar memórias incríveis juntos</p>
             <div class="contact-content">
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="nome" name="nome" placeholder="Seu Nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Seu E-mail" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="telefone" name="telefone" placeholder="Seu Telefone">
-                    </div>
-                    <div class="form-group">
-                        <select id="servico" name="servico" required>
-                            <option value="">Tipo de Evento</option>
-                            <option value="casamento">Casamento</option>
-                            <option value="15anos">Festa de 15 Anos</option>
-                            <option value="aniversario">Aniversário</option>
-                            <option value="corporativo">Evento Corporativo</option>
-                            <option value="familiar">Ensaio Familiar</option>
-                            <option value="formatura">Formatura</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="mensagem" name="mensagem" placeholder="Conte-nos sobre seu evento" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Enviar Mensagem</button>
-                </form>
+                <div class="contact-form">
+    <div class="form-group">
+        <input type="text" id="nome" placeholder="Seu Nome" required>
+    </div>
+    <div class="form-group">
+        <input type="email" id="email" placeholder="Seu E-mail" required>
+    </div>
+    <div class="form-group">
+        <input type="tel" id="telefone" placeholder="Seu Telefone" required>
+    </div>
+    <div class="form-group">
+        <select id="servico" required>
+            <option value="">Tipo de Evento</option>
+            <option value="Casamento">Casamento</option>
+            <option value="15 Anos">Festa de 15 Anos</option>
+            <option value="Aniversário">Aniversário</option>
+            <option value="Corporativo">Evento Corporativo</option>
+            <option value="Familiar">Ensaio Familiar</option>
+            <option value="Formatura">Formatura</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <textarea id="mensagem" placeholder="Conte-nos sobre seu evento" rows="5" required></textarea>
+    </div>
+    <button type="button" class="btn-primary" onclick="enviarWhatsApp()">Enviar pelo WhatsApp</button>
+</div>
+
+<script>
+function enviarWhatsApp() {
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const servico = document.getElementById('servico').value;
+    const mensagem = document.getElementById('mensagem').value;
+    
+    if (!nome || !email || !telefone || !servico || !mensagem) {
+        alert('Por favor, preencha todos os campos!');
+        return;
+    }
+    
+    const texto = `*Nova solicitação do site LAAQ!*%0A%0A` +
+                  `*Nome:* ${nome}%0A` +
+                  `*E-mail:* ${email}%0A` +
+                  `*Telefone:* ${telefone}%0A` +
+                  `*Tipo de Evento:* ${servico}%0A` +
+                  `*Mensagem:* ${mensagem}`;
+    
+    
+    const numeroWhatsApp = '5527997327793';
+    
+    const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+    window.open(url, '_blank');
+}
+</script>
                 <div class="contact-info">
                     <div class="info-item">
                         <h3>📧 E-mail</h3>
