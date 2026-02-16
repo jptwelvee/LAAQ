@@ -10,17 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- Popup de Sucesso -->
-    <div class="success-popup" id="successPopup">
-        <div class="success-icon">✅</div>
-        <h3>Mensagem Enviada!</h3>
-        <p>Recebemos sua solicitação e entraremos em contato em breve.</p>
-        <button class="btn-primary" onclick="fecharPopup()">Fechar</button>
-    </div>
-
     <!-- Navegação -->
     <nav class="navbar">
         <div class="container">
@@ -185,14 +174,9 @@
                     <div class="form-group">
                         <textarea id="mensagem" placeholder="Conte-nos sobre seu evento" rows="5" required></textarea>
                     </div>
-                    <button type="button" class="btn-primary" id="btnEnviar" onclick="enviarFormulario()">
-                        Enviar Mensagem 📩
+                    <button type="button" class="btn-primary" onclick="enviarWhatsApp()">
+                        Enviar pelo WhatsApp 💬
                     </button>
-                    
-                    <div class="loading" id="loading">
-                        <div class="spinner"></div>
-                        <p>Enviando sua mensagem...</p>
-                    </div>
                 </div>
 
                 <div class="contact-info">
@@ -228,13 +212,9 @@
     
     <script>
     // ============================================
-    // WEBHOOK AUTOMÁTICO - GOOGLE APPS SCRIPT
+    // ENVIAR PARA WHATSAPP -
     // ============================================
-    
-    // URL DO GOOGLE APPS SCRIPT
-    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz0i-FyvY0GTwJwV_C2skZgoam5WAOg0J6xZ3_6ABnNiI-mbSTrK8adbLTRLdNbvZEe/exec';
-    
-    async function enviarFormulario() {
+    function enviarWhatsApp() {
         const nome = document.getElementById('nome').value;
         const email = document.getElementById('email').value;
         const telefone = document.getElementById('telefone').value;
@@ -247,58 +227,30 @@
             return;
         }
         
-        // Mostra loading
-        document.getElementById('btnEnviar').style.display = 'none';
-        document.getElementById('loading').classList.add('show');
+        // Monta a mensagem formatada
+        const texto = `🌿 *CONTATO SITE LAAQ*%0A%0A` +
+                      `*Nome:* ${encodeURIComponent(nome)}%0A` +
+                      `*E-mail:* ${encodeURIComponent(email)}%0A` +
+                      `*Telefone:* ${encodeURIComponent(telefone)}%0A` +
+                      `*Tipo de Evento:* ${encodeURIComponent(servico)}%0A%0A` +
+                      `*Mensagem:*%0A${encodeURIComponent(mensagem)}`;
         
-        // Prepara os dados
-        const dados = {
-            nome: nome,
-            email: email,
-            telefone: telefone,
-            servico: servico,
-            mensagem: mensagem
-        };
+        // Seu número de WhatsApp
+        const numeroWhatsApp = '5527997327793';
         
-        try {
-            // Envia para o webhook
-            const response = await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dados)
-            });
-            
-            // Mostra popup de sucesso
-            document.getElementById('overlay').classList.add('show');
-            document.getElementById('successPopup').classList.add('show');
-            
-            // Limpa o formulário
+        // Abre o WhatsApp
+        const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+        window.open(url, '_blank');
+        
+        // Limpa o formulário depois de 1 segundo
+        setTimeout(() => {
             document.getElementById('nome').value = '';
             document.getElementById('email').value = '';
             document.getElementById('telefone').value = '';
             document.getElementById('servico').value = '';
             document.getElementById('mensagem').value = '';
-            
-            console.log('✅ Formulário enviado!');
-            
-        } catch (erro) {
-            console.error('❌ Erro:', erro);
-            alert('Erro ao enviar. Tente pelo WhatsApp: (27) 99732-7793');
-        } finally {
-            document.getElementById('loading').classList.remove('show');
-            document.getElementById('btnEnviar').style.display = 'inline-block';
-        }
+        }, 1000);
     }
-    
-    function fecharPopup() {
-        document.getElementById('overlay').classList.remove('show');
-        document.getElementById('successPopup').classList.remove('show');
-    }
-    
-    document.getElementById('overlay').addEventListener('click', fecharPopup);
     </script>
 </body>
 </html>

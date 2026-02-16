@@ -107,7 +107,7 @@ contactForm.addEventListener('submit', (e) => {
     // Limpa o formulário
     contactForm.reset();
     
-    /*
+    /* 
     EXEMPLO DE INTEGRAÇÃO COM BACKEND NODE.JS:
     
     fetch('http://seu-servidor.com/api/contato', {
@@ -127,6 +127,49 @@ contactForm.addEventListener('submit', (e) => {
         console.error('Erro:', error);
     });
     */
+});
+
+// ============================================
+// CONTADOR DE NÚMEROS - Anima os números das estatísticas
+// ============================================
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16); // 60 FPS
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target + (element.dataset.suffix || '');
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current) + (element.dataset.suffix || '');
+        }
+    }, 16);
+}
+
+// Observa quando as estatísticas aparecem na tela
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const number = entry.target;
+            const targetValue = parseInt(number.textContent);
+            
+            // Salva o sufixo (+ ou %) se existir
+            if (number.textContent.includes('+')) {
+                number.dataset.suffix = '+';
+            } else if (number.textContent.includes('%')) {
+                number.dataset.suffix = '%';
+            }
+            
+            animateCounter(number, targetValue);
+            statsObserver.unobserve(number);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-number').forEach(number => {
+    statsObserver.observe(number);
 });
 
 // ============================================
