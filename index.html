@@ -3,7 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAAQ Storymaker - Casamentos e Eventos Especiais</title>
+    <!-- TÍTULO - Aparece no Google e na aba do navegador -->
+    <title>LAAQ Storymaker | Filmagem de Casamentos e Eventos em Vitória ES</title>
+
+    <!-- DESCRIÇÃO - Aparece embaixo do link no Google -->
+    <meta name="description" content="LAAQ Storymaker - Filmagem e fotografia profissional de casamentos, festas de 15 anos, aniversários e eventos em Vitória ES. Eternize seus momentos especiais.">
+
+    <!-- PALAVRAS-CHAVE - O que as pessoas pesquisam no Google -->
+    <meta name="keywords" content="filmagem casamento vitória es, fotografia casamento espírito santo, storymaker vitória, filmagem eventos es, filmagem 15 anos vitória, cinematografia casamento es, LAAQ storymaker, filmagem profissional vitória, wedding filme espírito santo, foto e vídeo casamento es">
+
+    <!-- AUTOR E INDEXAÇÃO -->
+    <meta name="author" content="LAAQ Storymaker">
+    <meta name="robots" content="index, follow">
+
+    <!-- URL CANÔNICA - Troque pela URL real do seu site -->
+    <link rel="canonical" href="laaq.netlify.app">
+
+    <!-- OPEN GRAPH - Como aparece quando alguém compartilha no WhatsApp/Facebook -->
+    <meta property="og:title" content="LAAQ Storymaker | Filmagem de Casamentos e Eventos">
+    <meta property="og:description" content="Filmagem e fotografia profissional de casamentos e eventos em Vitória ES. Eternize seus momentos especiais com a LAAQ Storymaker.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="laaq.netlify.app">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="LAAQ Storymaker">
+
+    <!-- DADOS ESTRUTURADOS - Ajuda o Google a entender seu negócio -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LAAQ Storymaker",
+        "description": "Filmagem e fotografia profissional de casamentos e eventos especiais em Vitória e Espírito Santo",
+        "url": "laaq.netlify.app",
+        "telephone": "+55-27-99732-7793",
+        "email": "laaqstorymaker@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vitória",
+            "addressRegion": "ES",
+            "addressCountry": "BR"
+        },
+        "sameAs": ["https://www.instagram.com/laaqstorymaker"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços de Filmagem",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Filmagem de Casamentos em Vitória ES"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Filmagem de Festas de 15 Anos"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Filmagem de Eventos Corporativos"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ensaios Familiares"}}
+            ]
+        }
+    }
+    </script>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +66,7 @@
     <!-- Navegação -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">LAAQ Stor</div>
+            <div class="logo">LAAQ Storymaker</div>
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#servicos">Serviços</a></li>
@@ -133,7 +186,7 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2 class="section-title">Sobre a LAAQ Stor</h2>
+                    <h2 class="section-title">Sobre a LAAQ Storymaker</h2>
                     <p>Somos apaixonados por eternizar sentimentos. Cada evento é um encontro de histórias, sorrisos e emoções que acontecem uma única vez — e nossa missão é transformar esses instantes em lembranças que você poderá reviver para sempre.</p>
                     <p>Com experiência, sensibilidade e atenção a cada detalhe, registramos não apenas imagens, mas momentos verdadeiros que carregam significado, carinho e emoção.</p>
                 </div>
@@ -182,7 +235,7 @@
                 <div class="contact-info">
                     <div class="info-item">
                         <h3>📧 E-mail</h3>
-                        <p>laaqstorymaker@gmail.com</p>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1ddd0d0c0c2c5dec3c8dcd0dad4c3f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></p>
                     </div>
                     <div class="info-item">
                         <h3>📱 WhatsApp</h3>
@@ -208,11 +261,11 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
     
     <script>
     // ============================================
-    // ENVIAR PARA WHATSAPP -
+    // ENVIAR PARA WHATSAPP - VERSÃO SIMPLES
     // ============================================
     function enviarWhatsApp() {
         const nome = document.getElementById('nome').value;
@@ -242,7 +295,7 @@
         const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
         window.open(url, '_blank');
         
-        // Limpa o formulário depois de 1 segundo
+       // Limpa o formulário depois de 1 segundo
         setTimeout(() => {
             document.getElementById('nome').value = '';
             document.getElementById('email').value = '';
@@ -254,4 +307,5 @@
     </script>
 </body>
 </html>
+
 
