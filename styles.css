@@ -434,7 +434,21 @@ a {
     height: 100%;
     object-fit: cover;
 }
+.video-center {
+    display: flex;
+    justify-content: center; /* centraliza horizontal */
+    align-items: center;
+    width: 100%;
+    margin: 40px 0;
+}
 
+.video-center video {
+    width: 80%; /* controla largura do vídeo */
+    max-width: 900px; /* limite máximo */
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
 .portfolio-info {
     padding: var(--spacing-md);
     background: var(--white);
